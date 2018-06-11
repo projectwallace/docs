@@ -3,6 +3,8 @@ import Prismic, {Predicates} from 'prismic.io'
 import {RichText} from 'prismic-dom'
 import Error from 'next/error'
 import Link from 'next/link'
+import marked from 'marked'
+import striptags from 'striptags'
 
 import linkresolver from '../helpers/linkresolver'
 import Layout from '../components/layout'
@@ -26,7 +28,13 @@ export default class extends Component {
 		return {
 			doc: {
 				title: doc.rawJSON.title,
-				content: RichText.asHtml(doc.rawJSON.content, linkresolver),
+				content: marked(
+					striptags(
+						RichText.asHtml(doc.rawJSON.content, linkresolver),
+						[],
+						'\n'
+					)
+				),
 				lastModified: doc.lastPublicationDate
 			},
 			docs: results.map(post => {
