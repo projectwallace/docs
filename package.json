@@ -1,0 +1,17 @@
+{
+  "name": "project-wallace-docs",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "next": "^6.0.3",
+    "prismic-dom": "^2.1.0",
+    "prismic.io": "^3.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {}
+}
