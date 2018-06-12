@@ -60,6 +60,12 @@ export default props => (
 				height: auto;
 			}
 
+			p,
+			li,
+			blockquote {
+				max-width: 60ch;
+			}
+
 			a {
 				color: inherit;
 			}

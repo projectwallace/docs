@@ -23,16 +23,20 @@ class PrismicClient {
 	}
 
 	mapDoc(doc) {
-		return {
-			type: 'doc',
-			title: doc.rawJSON.title,
-			content: marked(
+		function prismicToMarkDownToHtml(prismicContent, linkresolver) {
+			return marked(
 				striptags(
 					RichText.asHtml(doc.rawJSON.content, linkresolver),
 					[],
 					'\n'
 				)
-			),
+			)
+		}
+
+		return {
+			type: 'doc',
+			title: doc.rawJSON.title,
+			content: prismicToMarkDownToHtml(doc.rawJSON.content, linkresolver),
 			lastModified: doc.lastPublicationDate,
 			slug: doc.uid
 		}
