@@ -17,7 +17,7 @@ export default props => (
 
 		<style jsx>{`
 			.sidebar {
-				margin-top: 48px;
+				margin-top: 96px;
 			}
 
 			ol {

@@ -1,7 +1,7 @@
 export default () => (
 	<header className='site-header'>
 		<nav className="site-nav">
-			<a className='logo' href='https://www.projecswallace.com'>Wallace</a>
+			<a className='logo' href='https://www.projectwallace.com'>Wallace</a>
 			<form className="site-search" method="GET" action="https://www.projectwallace.com/search">
 				<label className="site-search__label" for="site-search-query">What are you looking for?</label>
 				<input className="site-search__input" id="site-search-query" name="q" placeholder="Type your search here" type="search" />
@@ -27,11 +27,15 @@ export default () => (
 
 			.site-nav__link {
 				text-decoration: none;
-				padding: 24px 4px;
+				padding: 16px 4px;
 			}
 
 			.site-nav__link::after {
 				border-bottom: none;
+			}
+
+			.site-nav__link:hover::after {
+				transform: none;
 			}
 
 			.site-nav__link--is-active::after {

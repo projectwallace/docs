@@ -41,6 +41,59 @@ export default class extends Component {
 				<Link href='/docs'>
 					<a className='return'>Back to docs homepage</a>
 				</Link>
+
+				<style jsx>{`
+					h1 {
+						font-weight: lighter;
+						font-size: 48px;
+						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+						margin-bottom: 48px;
+					}
+				`}</style>
+
+				<style jsx global>{`
+					pre {
+						background-color: #252329;
+						padding: 16px 24px;
+						overflow: auto;
+					}
+
+					@media (min-width: 1000px) {
+						pre {
+							max-width: 600px;
+							max-width: calc(100vw - 500px);
+						}
+					}
+
+					.doc__content {
+						margin-bottom: 96px;
+					}
+
+					.doc__content h2 {
+						margin: 48px 0 16px;
+					}
+
+					.doc__content h3 {
+						margin: 24px 0 16px;
+						font-size: 16px;
+						font-weight: bold;
+						text-transform: uppercase;
+					}
+
+					.doc__content p {
+						line-height: 1.5;
+						margin-bottom: 24px;
+					}
+
+					.doc__content ol,
+					.doc__content ul {
+						margin-left: 48px;
+					}
+
+					.doc__content li p {
+						margin-bottom: 8px;
+					}
+				`}</style>
 			</Layout>
 		)
 	}
