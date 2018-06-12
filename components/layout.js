@@ -54,6 +54,12 @@ export default props => (
 				font-size: 48px;
 			}
 
+			img {
+				vertical-align: middle;
+				max-width: 100%;
+				height: auto;
+			}
+
 			a {
 				color: inherit;
 			}

@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import Prismic, {Predicates} from 'prismic.io'
 import {RichText} from 'prismic-dom'
 import Error from 'next/error'
 import Link from 'next/link'
@@ -10,42 +9,22 @@ import linkresolver from '../helpers/linkresolver'
 import Layout from '../components/layout'
 import Sidebar from '../components/sidebar'
 
-const PRISMIC_API_URL = 'https://project-wallace.cdn.prismic.io/api/v2'
+import Prismic from '../services/prismic'
 
 export default class extends Component {
 	static async getInitialProps({query}) {
-		const api = await Prismic.api(PRISMIC_API_URL)
-		const doc = await api.getByUID('doc', query.slug)
+		const doc = await Prismic.getCollectionItem('doc', query.slug)
 
 		if (!doc) {
 			return {notFound: true}
 		}
 
-		const { results } = await api.query(
-			Predicates.at('document.type', 'doc')
-		)
+		const {results} = await Prismic.getCollectionItems('doc')
 
 		return {
-			doc: {
-				title: doc.rawJSON.title,
-				content: marked(
-					striptags(
-						RichText.asHtml(doc.rawJSON.content, linkresolver),
-						[],
-						'\n'
-					)
-				),
-				lastModified: doc.lastPublicationDate
-			},
-			docs: results.map(post => {
-				return {
-					type: 'doc',
-					title: post.rawJSON.title,
-					slug: post.uid,
-					lastModified: post.lastPublicationDate,
-					active: post.uid === query.slug
-				}
-			})
+			doc: Prismic.mapDoc(doc),
+			docs: results.map(doc => Prismic.mapDoc(doc)),
+			activeDoc: query.slug
 		}
 	}
 
@@ -62,7 +41,7 @@ export default class extends Component {
 						<div dangerouslySetInnerHTML={{__html: this.props.doc.content}}></div>
 					</article>
 
-					<Sidebar className='sidebar' docs={this.props.docs} />
+					<Sidebar className='sidebar' docs={this.props.docs} activeDoc={this.props.activeDoc} />
 
 					<Link href='/docs'>
 						<a className='return'>Back to docs homepage</a>

@@ -7,7 +7,7 @@ export default props => (
 			{props.docs.map(doc => (
 				<li key={doc.slug}>
 					<Link href={`/doc?slug=${doc.slug}`} as={linkresolver(doc)}>
-						<a className={doc.active ? 'active': ''}>{doc.title}</a>
+						<a className={doc.slug === props.activeDoc ? 'active': ''}>{doc.title}</a>
 					</Link>
 				</li>
 			))}
