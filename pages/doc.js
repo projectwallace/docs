@@ -3,9 +3,7 @@ import Error from 'next/error'
 import Link from 'next/link'
 
 import Prismic from '../services/prismic'
-
 import Layout from '../components/global/layout'
-import Sidebar from '../components/sidebar'
 
 export default class extends Component {
 	static async getInitialProps({query}) {

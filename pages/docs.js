@@ -1,8 +1,6 @@
 import {Component} from 'react'
 
 import Layout from '../components/global/layout'
-import Sidebar from '../components/sidebar'
-
 import Prismic from '../services/prismic'
 
 export default class extends Component {
