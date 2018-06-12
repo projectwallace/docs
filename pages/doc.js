@@ -1,15 +1,11 @@
 import {Component} from 'react'
-import {RichText} from 'prismic-dom'
 import Error from 'next/error'
 import Link from 'next/link'
-import marked from 'marked'
-import striptags from 'striptags'
-
-import linkresolver from '../helpers/linkresolver'
-import Layout from '../components/layout'
-import Sidebar from '../components/sidebar'
 
 import Prismic from '../services/prismic'
+
+import Layout from '../components/global/layout'
+import Sidebar from '../components/sidebar'
 
 export default class extends Component {
 	static async getInitialProps({query}) {
@@ -33,40 +29,18 @@ export default class extends Component {
 			return <Error statusCode={404} />
 		}
 
+		const {activeDoc, docs, doc} = this.props
+
 		return (
-			<Layout title={this.props.doc.title}>
-				<div className="doc">
-					<article>
-						<h1>{this.props.doc.title}</h1>
-						<div dangerouslySetInnerHTML={{__html: this.props.doc.content}}></div>
-					</article>
+			<Layout title={doc.title} docs={docs} activeDoc={activeDoc}>
+				<article className="doc__content">
+					<h1>{doc.title}</h1>
+					<div dangerouslySetInnerHTML={{__html: doc.content}}></div>
+				</article>
 
-					<Sidebar className='sidebar' docs={this.props.docs} activeDoc={this.props.activeDoc} />
-
-					<Link href='/docs'>
-						<a className='return'>Back to docs homepage</a>
-					</Link>
-				</div>
-
-				<style jsx>{`
-					@media (min-width: 1000px) {
-						.doc {
-							display: grid;
-							grid-template-columns: 400px 1fr;
-							grid-template-areas: 'sidebar doc' '. return';
-							grid-gap: 48px 16px;
-						}
-					}
-
-					article {
-						grid-area: doc;
-					}
-
-					.return {
-						grid-area: return;
-						color: #9491a1;
-					}
-				`}</style>
+				<Link href='/docs'>
+					<a className='return'>Back to docs homepage</a>
+				</Link>
 			</Layout>
 		)
 	}

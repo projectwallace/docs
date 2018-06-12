@@ -30,16 +30,5 @@ export default () => (
 				</nav>
 			))}
 		</div>
-
-		<style jsx>{`
-			.site-footer {
-				padding-right: 16px;
-				padding-left: 16px;
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-end;
-				margin-top: auto;
-			}
-		`}</style>
 	</footer>
 )

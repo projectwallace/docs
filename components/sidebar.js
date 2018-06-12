@@ -2,26 +2,28 @@ import Link from 'next/link'
 import linkresolver from '../helpers/linkresolver'
 
 export default props => (
-	<div>
-		<ol>
-			{props.docs.map(doc => (
-				<li key={doc.slug}>
-					<Link href={`/doc?slug=${doc.slug}`} as={linkresolver(doc)}>
-						<a className={doc.slug === props.activeDoc ? 'active': ''}>{doc.title}</a>
-					</Link>
-				</li>
-			))}
-		</ol>
+	<div className="sidebar">
+		<nav>
+			<ol>
+				{props.docs.map(doc => (
+					<li key={doc.slug}>
+						<Link href={`/doc?slug=${doc.slug}`} as={linkresolver(doc)}>
+							<a className={doc.slug === props.activeDoc && 'active'}>{doc.title}</a>
+						</Link>
+					</li>
+				))}
+			</ol>
+		</nav>
 
 		<style jsx>{`
-			div {
+			.sidebar {
 				margin-top: 48px;
 			}
 
 			ol {
 				padding-left: 0;
 				list-style: none;
-				margin-left: -16px;
+				margin-left: -16px; /* snug against left of screen */
 			}
 
 			li {
@@ -30,7 +32,7 @@ export default props => (
 
 			a {
 				display: block;
-				color: inherit;
+				color: #cfcdd5;
 				text-decoration: none;
 				padding: 8px 16px;
 				border-left: 3px solid transparent;

@@ -1,6 +1,6 @@
 import {Component} from 'react'
 
-import Layout from '../components/layout'
+import Layout from '../components/global/layout'
 import Sidebar from '../components/sidebar'
 
 import Prismic from '../services/prismic'
@@ -15,10 +15,8 @@ export default class extends Component {
 	}
 
 	render() {
-		return <Layout title="Docs">
+		return <Layout title="Docs" docs={this.props.docs}>
 			<h1>Docs home</h1>
-
-			<Sidebar docs={this.props.docs} />
 		</Layout>
 	}
 }
