@@ -27,7 +27,7 @@ class PrismicClient {
 		function prismicToMarkDownToHtml(prismicContent, linkresolver) {
 			return marked(
 				striptags(
-					RichText.asHtml(doc.rawJSON.content, linkresolver),
+					RichText.asHtml(prismicContent, linkresolver),
 					[],
 					'\n'
 				)
