@@ -13,7 +13,7 @@ export default () => (
 		</nav>
 		<nav className="user-links">
 			<div className="btn-group">
-				<a href="https://www.projectwallace.com/project/new" className="btn btn--cta">New project</a>
+				<a href="https://www.projectwallace.com/projects/new" className="btn btn--cta">New project</a>
 			</div>
 		</nav>
 
