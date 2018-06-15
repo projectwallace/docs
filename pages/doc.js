@@ -7,17 +7,17 @@ import Layout from '../components/global/layout'
 
 export default class extends Component {
 	static async getInitialProps({query}) {
-		const doc = await Prismic.getCollectionItem('doc', query.slug)
+		const {results} = await Prismic.getCollectionItems('doc')
+		const docs = results.map(doc => Prismic.mapDoc(doc))
+		const doc = docs.find(doc => doc.slug === query.slug)
 
 		if (!doc) {
 			return {notFound: true}
 		}
 
-		const {results} = await Prismic.getCollectionItems('doc')
-
 		return {
-			doc: Prismic.mapDoc(doc),
-			docs: results.map(doc => Prismic.mapDoc(doc)),
+			doc,
+			docs,
 			activeDoc: query.slug
 		}
 	}
@@ -86,6 +86,11 @@ export default class extends Component {
 					.doc__content ol,
 					.doc__content ul {
 						margin-left: 48px;
+					}
+
+					.doc__content p,
+					.doc__content li {
+						max-width: 60ch;
 					}
 
 					.doc__content li p {

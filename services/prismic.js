@@ -18,7 +18,8 @@ class PrismicClient {
 	async getCollectionItems(collection) {
 		const client = await Prismic.api(this.api_url)
 		return client.query(
-			Predicates.at('document.type', collection)
+			Predicates.at('document.type', collection),
+			{'orderings': '[my.doc.title]'}
 		)
 	}
 

@@ -7,7 +7,7 @@ export default props => (
 			<ol>
 				{props.docs.map(doc => (
 					<li key={doc.slug}>
-						<Link href={`/doc?slug=${doc.slug}`} as={linkresolver(doc)}>
+						<Link prefetch href={`/doc?slug=${doc.slug}`} as={linkresolver(doc)}>
 							<a className={doc.slug === props.activeDoc && 'active'}>{doc.title}</a>
 						</Link>
 					</li>

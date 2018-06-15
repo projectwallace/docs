@@ -3,7 +3,7 @@ export default () => (
 		<nav className="site-nav">
 			<a className='logo' href='https://www.projectwallace.com'>Wallace</a>
 			<form className="site-search" method="GET" action="https://www.projectwallace.com/search">
-				<label className="site-search__label" for="site-search-query">What are you looking for?</label>
+				<label className="site-search__label" htmlFor="site-search-query">What are you looking for?</label>
 				<input className="site-search__input" id="site-search-query" name="q" placeholder="Type your search here" type="search" />
 				<button className="site-search__submit">Search!</button>
 			</form>
@@ -13,8 +13,7 @@ export default () => (
 		</nav>
 		<nav className="user-links">
 			<div className="btn-group">
-				<a href="https://www.projectwallace.com/login" className="btn">Log in</a>
-				<a href="https://www.projectwallace.com/register" className="btn btn--cta">Register</a>
+				<a href="https://www.projectwallace.com/project/new" className="btn btn--cta">New project</a>
 			</div>
 		</nav>
 
