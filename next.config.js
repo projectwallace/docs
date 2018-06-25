@@ -1,5 +1,5 @@
 const {NOW_URL} = process.env
-const {now: {alias}} = require('./package.json')
+const {alias} = require('./now.json')
 
 module.exports = {
   assetPrefix: NOW_URL ? `https://${alias}` : 'http://localhost:3000',
