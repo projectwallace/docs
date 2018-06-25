@@ -20,7 +20,7 @@ export default () => (
 		<style jsx>{`
 			.site-header {
 				border-bottom: none;
-				padding: 0 16px;
+				padding: 8px 16px;
 				margin-bottom: 48px;
 			}
 
